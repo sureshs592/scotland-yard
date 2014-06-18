@@ -1,1 +1,15 @@
-/* CSS declarations go here */
+@font-face {
+	font-family: std-regular;
+	src: url(fonts/opensans-regular.ttf);
+}
+
+body {
+	font-family: 'Open Sans';
+	margin: 20px;
+}
+
+.station {
+	fill:white;
+	stroke: black;
+	stroke-width:3.5;
+}

@@ -1,13 +1,12 @@
 <head>
-  <title>scotland-yard</title>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <title>Scotland Yard!</title>
 </head>
 
 <body>
-  {{> hello}}
+	<h1>Player Trail</h1>
+	<svg id="trail-canvas">
+		<circle cx="10" cy="10" r="6" class="station" id="s_1"></circle>
+		<circle cx="10" cy="50" r="6" class="station" id="s_2"></circle>
+	</svg>
 </body>
-
-<template name="hello">
-  <h1>Hello World!</h1>
-  {{greeting}}
-  <input type="button" value="Click" />
-</template>
