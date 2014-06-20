@@ -1,0 +1,11 @@
+<template name="stationList">
+  <div class="stations">
+    {{#each stations}}
+      {{> station}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="station">
+  <p>{{number}}</p>
+</template>
