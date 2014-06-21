@@ -13,8 +13,8 @@ $(document).ready(function() {
 
     saveMove("thief", stationNumber, transport);
 
-    //End of method. Resetting button
-    resetButton(button, "Save");
+    $(button).removeAttr("disabled");
+    $(button).text(text);
   });
 
   /*
@@ -52,14 +52,6 @@ $(document).ready(function() {
         console.log(id);
       }
     });
-  }
-
-  /*
-  * Reset a button after form processing is complete
-  */
-  function resetButton(button, text) {
-    $(button).removeAttr("disabled");
-    $(button).text(text);
   }
 });
 
