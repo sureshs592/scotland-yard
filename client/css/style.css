@@ -3,3 +3,9 @@
 	stroke: black;
 	stroke-width:3.5;
 }
+
+.path {
+  z-index: -1;
+  stroke: blue;
+  stroke-width: 7;
+}
