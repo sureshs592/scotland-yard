@@ -96,7 +96,7 @@ $(document).ready(function() {
     console.log(moves);
 
     //Starting point of the trail
-    var cx = 10, cy = 10;
+    var cx = 12, cy = 10;
     var startingPoint = createStation("s_0", "station", cx, cy, stationRadius);
     stations.push(startingPoint);
 
