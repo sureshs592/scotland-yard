@@ -8,6 +8,28 @@
 
     <div id="thief">
       <h3>Mr. X</h3>
+
+      <div id="move-form">
+        <h4>Record A Move</h4>
+
+        <div>
+          <label for="stationNumber" class="control-label">Station:</label>
+          <input type="text" class="form-control" id="stationNumber" placeholder="e.g. 192">
+        </div> <br />
+
+        <div>
+          <label for="transportRadios" class="control-label">Transport:</label> <br />
+          <input type="radio" name="transportRadios" id="transport" value="taxi" checked />&nbsp;Taxi&nbsp;
+          <input type="radio" name="transportRadios" id="transport" value="bus" />&nbsp;Bus&nbsp;
+          <input type="radio" name="transportRadios" id="transport" value="ug" />&nbsp;Underground&nbsp;
+          <input type="radio" name="transportRadios" id="transport" value="black" />&nbsp;Black&nbsp;
+        </div> <br />
+
+        <div>
+          <button type="button" id="move-form-submit" class="btn btn-primary">Save</button>
+        </div>
+      </div> <br />
+
       <h4>Map Trail</h4>
       {{> stationList}}
     </div>
