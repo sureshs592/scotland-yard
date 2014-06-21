@@ -35,3 +35,19 @@
     </div>
   </div>
 </body>
+
+<template name="mapTrail">
+  <div class="stations">
+    <ol>
+      {{#each stations}}
+        {{> station}}
+      {{/each}}
+    </ol>
+  </div>
+</template>
+
+<template name="station">
+  <li>
+    {{moveTime}} - {{transport}} - {{station}}
+  </li>
+</template>

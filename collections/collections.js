@@ -2,6 +2,16 @@
 Document Schema:
 {
   _id: ###,
+  name: Round-1
+}
+*/
+
+Games = new Meteor.Collection('games');
+
+/*
+Document Schema:
+{
+  _id: ###,
   game: (_id of game object),
   order: 1,
   time: ,
