@@ -1,7 +1,7 @@
 .station {
 	fill:white;
-	stroke: black;
-	stroke-width: #4D4D4D;
+	stroke: #4D4D4D;
+	stroke-width: 4;
 }
 
 .path {
