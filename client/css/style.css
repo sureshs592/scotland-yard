@@ -1,12 +1,13 @@
 .station {
 	fill:white;
 	stroke: black;
-	stroke-width:4;
+	stroke-width: #4D4D4D;
 }
 
 .path {
   z-index: -1;
   stroke-width: 7;
+  filter:url(#svg-blur-effect);
 }
 
 .taxi {
