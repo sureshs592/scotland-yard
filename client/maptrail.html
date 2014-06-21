@@ -1,11 +1,15 @@
 <template name="mapTrail">
   <div class="stations">
-    {{#each stations}}
-      {{> station}}
-    {{/each}}
+    <ol>
+      {{#each stations}}
+        {{> station}}
+      {{/each}}
+    </ol>
   </div>
 </template>
 
 <template name="station">
-  <p>{{number}}</p>
+  <li>
+    {{moveTime}} - {{transport}} - {{station}}
+  </li>
 </template>
