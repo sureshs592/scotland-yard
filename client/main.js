@@ -15,7 +15,8 @@ Template.station.helpers({
 });
 
 //CONSTANTS
-var stationGap = 40;
+var stationGap = 50;
+var stationRadius = 7;
 
 $(document).ready(function() {
   //Render map once the page has loaded
@@ -78,6 +79,13 @@ $(document).ready(function() {
     var canvasID = "#" + player + "-canvas";
     var divID = "#" + player + "-canvas-div";
     var canvas = $(canvasID);
+
+    //Flush existing trail
+    var lineObjs = $(canvas).find("line");
+    $(lineObjs).remove();
+    var circleObjs = $(canvas).find("circle");
+    $(circleObjs).remove();
+
     var stations = new Array();
     var paths = new Array();
 
@@ -89,7 +97,7 @@ $(document).ready(function() {
 
     //Starting point of the trail
     var cx = 10, cy = 10;
-    var startingPoint = createStation("s_0", "station", cx, cy, 6);
+    var startingPoint = createStation("s_0", "station", cx, cy, stationRadius);
     stations.push(startingPoint);
 
     //Prepare paths and stations for subsequent moves
@@ -99,7 +107,7 @@ $(document).ready(function() {
       var clazz = "path " + move.transport;
       var path = createTrip("p" + idAppend, clazz, cx, cy);
       cy += stationGap;
-      var station = createStation("s" + idAppend, "station", cx, cy, 6);
+      var station = createStation("s" + idAppend, "station", cx, cy, stationRadius);
 
       paths.push(path);
       stations.push(station);

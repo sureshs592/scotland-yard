@@ -1,11 +1,26 @@
 .station {
 	fill:white;
 	stroke: black;
-	stroke-width:3.5;
+	stroke-width:4;
 }
 
 .path {
   z-index: -1;
-  stroke: blue;
   stroke-width: 7;
+}
+
+.taxi {
+  stroke: #EFBB00;
+}
+
+.bus {
+  stroke: #00AB2C;
+}
+
+.ug {
+  stroke: #FF45AE;
+}
+
+.black {
+  stroke: black;
 }
