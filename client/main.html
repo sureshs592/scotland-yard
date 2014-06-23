@@ -6,40 +6,79 @@
     <h1>Scotland Yard</h1>
     <h2>Player Tracker</h2>
 
-    <div id="thief">
-      <h3>Mr. X</h3>
+    <div id="move-form">
+      <h4>Record A Move</h4>
 
-      <div id="move-form">
-        <h4>Record A Move</h4>
-
-        <div>
-          <label for="stationNumber" class="control-label">Station:</label>
-          <input type="text" class="form-control" id="stationNumber" placeholder="e.g. 192">
-        </div> <br />
-
-        <div>
-          <label for="transportRadios" class="control-label">Transport:</label> <br />
-          <input type="radio" name="transportRadios" id="transport" value="taxi" checked />&nbsp;Taxi&nbsp;
-          <input type="radio" name="transportRadios" id="transport" value="bus" />&nbsp;Bus&nbsp;
-          <input type="radio" name="transportRadios" id="transport" value="ug" />&nbsp;Underground&nbsp;
-          <input type="radio" name="transportRadios" id="transport" value="black" />&nbsp;Black&nbsp;
-        </div> <br />
-
-        <div>
-          <button type="button" id="move-form-submit" class="btn btn-primary">Save</button>
-          <button type="button" id="test" class="btn btn-primary">Render Trail</button>
-        </div>
+      <div>
+        <label for="playerRadios" class="control-label">Player:</label> <br />
+        <input type="radio" name="playerRadios" id="player" value="thief" checked />&nbsp;Thief&nbsp;
+        <input type="radio" name="playerRadios" id="player" value="detective-1" />&nbsp;Detective 1&nbsp;
+        <input type="radio" name="playerRadios" id="player" value="detective-2" />&nbsp;Detective 2&nbsp;
+        <input type="radio" name="playerRadios" id="player" value="detective-3" />&nbsp;Detective 3&nbsp;
+        <input type="radio" name="playerRadios" id="player" value="detective-4" />&nbsp;Detective 4&nbsp;
+        <input type="radio" name="playerRadios" id="player" value="detective-5" />&nbsp;Detective 5&nbsp;
       </div> <br />
 
-      <div id="thief-canvas-div">
-        <h4>Map Trail</h4>
+      <div>
+        <label for="stationNumber" class="control-label">Station:</label>
+        <input type="text" class="form-control" id="stationNumber" placeholder="e.g. 192">
+      </div> <br />
+
+      <div>
+        <label for="transportRadios" class="control-label">Transport:</label> <br />
+        <input type="radio" name="transportRadios" id="transport" value="taxi" checked />&nbsp;Taxi&nbsp;
+        <input type="radio" name="transportRadios" id="transport" value="bus" />&nbsp;Bus&nbsp;
+        <input type="radio" name="transportRadios" id="transport" value="ug" />&nbsp;Underground&nbsp;
+        <input type="radio" name="transportRadios" id="transport" value="black" />&nbsp;Black&nbsp;
+      </div> <br />
+
+      <div>
+        <button type="button" id="move-form-submit" class="btn btn-primary">Save</button>
+        <button type="button" id="test" class="btn btn-primary">Render Trail</button>
+      </div>
+    </div> <br />
+
+    <h3>Player Trails</h3>
+    <div id="player-maps" class="row">
+      <div id="thief-canvas-div" class="col-md-2 player-canvas">
+        <h4>Thief</h4>
         <svg id="thief-canvas" width="24" height="300">
         </svg>
       </div>
 
-      <h4>Moves Collection</h4>
-      {{> mapTrail}}
+      <div id="detective-1-canvas-div" class="col-md-2 player-canvas">
+        <h4>Detective 1</h4>
+        <svg id="detective-1-canvas" width="24" height="300">
+        </svg>
+      </div>
+
+      <div id="detective-2-canvas-div" class="col-md-2 player-canvas">
+        <h4>Detective 2</h4>
+        <svg id="detective-2-canvas" width="24" height="300">
+        </svg>
+      </div>
+
+      <div id="detective-3-canvas-div" class="col-md-2 player-canvas">
+        <h4>Detective 3</h4>
+        <svg id="detective-3-canvas" width="24" height="300">
+        </svg>
+      </div>
+
+      <div id="detective-4-canvas-div" class="col-md-2 player-canvas">
+        <h4>Detective 4</h4>
+        <svg id="detective-4-canvas" width="24" height="300">
+        </svg>
+      </div>
+
+      <div id="detective-5-canvas-div" class="col-md-2 player-canvas">
+        <h4>Detective 5</h4>
+        <svg id="detective-5-canvas" width="24" height="300">
+        </svg>
+      </div>
     </div>
+
+    <h4>Moves Collection</h4>
+    {{> mapTrail}}
   </div>
 </body>
 
@@ -55,6 +94,6 @@
 
 <template name="station">
   <li>
-    {{order}} - {{moveTime}} - {{transport}} - {{station}}
+    {{player}}: {{order}} - {{moveTime}} - {{transport}} - {{station}}
   </li>
 </template>

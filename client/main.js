@@ -34,8 +34,9 @@ $(document).ready(function() {
     //Getting input values
     var stationNumber = $("#stationNumber").val();
     var transport = $("#transport:checked").val();
+    var player = $("#player:checked").val();
 
-    saveMove("thief", stationNumber, transport);
+    saveMove(player, stationNumber, transport);
 
     $(button).removeAttr("disabled");
     $(button).text("Save");
@@ -58,7 +59,7 @@ $(document).ready(function() {
     var games = Games.find({}).fetch();
     var gameID = games[0]._id;
 
-    var lastMove = Moves.findOne({"game": gameID}, {sort: [["order", "desc"]]});
+    var lastMove = Moves.findOne({"game": gameID, "player": playerType}, {sort: [["order", "desc"]]});
     var moveOrder = (lastMove) ? lastMove.order + 1 : 1 ;
 
     //Creating new move document and storing it
@@ -119,7 +120,7 @@ $(document).ready(function() {
 
     //Hack to make the inserted SVG visible
     $(divID).html($(divID).html());
-    return;
+    return true;
   }
 
   function createStation(id, clazz, cx, cy, r) {

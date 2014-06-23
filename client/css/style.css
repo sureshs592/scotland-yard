@@ -24,3 +24,9 @@
 .black {
   stroke: black;
 }
+
+.player-canvas {
+	border: 1px solid black;
+	background-color: gray;
+	/*margin: 0px 2px 0px 2px;*/
+}
