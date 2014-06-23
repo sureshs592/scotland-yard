@@ -1,10 +1,20 @@
+/*.player-canvas {
+	padding-left: 6px;
+	padding-right: 6px;
+}*/
+
 .canvas-div {
 	/*background: #CDCEFF;*/
+	width: 15%;
+	margin-left: 7%;
+	float: left;
 }
 
 .info-div {
 	/*background: #FFC0C6;*/
 	padding-left: 0px;
+	width: 75%;
+	float: right;
 }
 
 .station {
@@ -39,4 +49,13 @@
 
 .black {
   stroke: black;
+}
+
+.player-title {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#stationNumber {
+	width: 80px;
 }
