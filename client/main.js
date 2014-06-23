@@ -19,8 +19,6 @@ var stationGap = 50;
 var stationRadius = 7;
 
 $(document).ready(function() {
-  //Render map once the page has loaded
-  // renderMapTrail("thief");
 
   //Trigger form to save a move
   $("#move-form-submit").click(function (e) {
@@ -43,7 +41,12 @@ $(document).ready(function() {
   });
 
   $("#test").click(function (e) {
-    renderMapTrail("thief");
+    renderTrail("thief");
+    renderTrail("detective-1");
+    renderTrail("detective-2");
+    renderTrail("detective-3");
+    renderTrail("detective-4");
+    renderTrail("detective-5");
   });
 
   /*
@@ -75,12 +78,29 @@ $(document).ready(function() {
     Moves.insert(newMove);
   }
 
-  function renderMapTrail(player) {
-    console.log("Rendering map trail");
+  function renderTrail(player) {
+    var divID = "#" + player + "-div";
+    var div = $(divID);
     var canvasID = "#" + player + "-canvas";
-    var divID = "#" + player + "-canvas-div";
     var canvas = $(canvasID);
+    var infoID = "#" + player + "-info";
+    var info = $(infoID);
 
+    //Get all moves made by the player
+    var games = Games.find({}).fetch();
+    var gameID = games[0]._id;
+    var moves = Moves.find({"game": gameID, "player": playerType}, {sort: [["order", "desc"]]}).fetch();
+    console.log(moves);
+
+    renderSVG(canvas, moves);
+    renderInfo(info, moves);
+
+    //Hack to make the inserted SVG visible
+    $(div).html($(div).html());
+    return true;
+  }
+
+  function renderSVG(canvas, moves) {
     //Flush existing trail
     var lineObjs = $(canvas).find("line");
     $(lineObjs).remove();
@@ -89,12 +109,6 @@ $(document).ready(function() {
 
     var stations = new Array();
     var paths = new Array();
-
-    //Get all moves made by the player
-    var games = Games.find({}).fetch();
-    var gameID = games[0]._id;
-    var moves = Moves.find({"game": gameID}).fetch();
-    console.log(moves);
 
     //Starting point of the trail
     var cx = 12, cy = 10;
@@ -118,8 +132,6 @@ $(document).ready(function() {
     for (var i = 0; i < paths.length; i++) { $(canvas).append(paths[i]); }
     for (var i = 0; i < stations.length; i++) { $(canvas).append(stations[i]); }
 
-    //Hack to make the inserted SVG visible
-    $(divID).html($(divID).html());
     return true;
   }
 
