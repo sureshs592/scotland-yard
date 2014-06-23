@@ -14,10 +14,6 @@ Template.station.helpers({
   }
 });
 
-//CONSTANTS
-var stationGap = 50;
-var stationRadius = 7;
-
 $(document).ready(function() {
 
   //Trigger form to save a move
@@ -89,18 +85,22 @@ $(document).ready(function() {
     //Get all moves made by the player
     var games = Games.find({}).fetch();
     var gameID = games[0]._id;
-    var moves = Moves.find({"game": gameID, "player": playerType}, {sort: [["order", "desc"]]}).fetch();
-    console.log(moves);
+    var moves = Moves.find({"game": gameID, "player": player}, {sort: [["order", "asc"]]}).fetch();
 
     renderSVG(canvas, moves);
     renderInfo(info, moves);
 
-    //Reloading the div content. Hack to make the inserted SVG visible: http://stackoverflow.com/questions/3642035/jquerys-append-not-working-with-svg-element
+    //Reloading the div content. Hack to make the inserted SVG visible:
+    //http://stackoverflow.com/questions/3642035/jquerys-append-not-working-with-svg-element
     $(div).html($(div).html());
     return true;
   }
 
   function renderSVG(canvas, moves) {
+    //CONSTANTS
+    var stationGap = 50;
+    var stationRadius = 7;
+
     //Flush existing trail
     var lineObjs = $(canvas).find("line");
     $(lineObjs).remove();
@@ -117,15 +117,20 @@ $(document).ready(function() {
 
     //Prepare paths and stations for subsequent moves
     for (var i = 0; i < moves.length; i++) {
+      console.log("*****RENDERING MOVE*****");
       var move = moves[i];
+      console.log("Player=" + move.player + ", Order=" + move.order);
       var idAppend = "_" + (i + 1);
+      console.log("idAppend=" + idAppend);
       var clazz = "path " + move.transport;
-      var path = createTrip("p" + idAppend, clazz, cx, cy);
+      console.log("class=" + clazz);
+      var path = createTrip("p" + idAppend, clazz, cx, cy, stationGap);
       cy += stationGap;
       var station = createStation("s" + idAppend, "station", cx, cy, stationRadius);
 
       paths.push(path);
       stations.push(station);
+      console.log("=====FINISHED RENDERING MOVE=====");
     }
 
     //Render all paths and stations
@@ -145,7 +150,7 @@ $(document).ready(function() {
     return circle;
   }
 
-  function createTrip(id, clazz, x1, y1) {
+  function createTrip(id, clazz, x1, y1, stationGap) {
     var path = document.createElement("line");
     $(path).addClass(clazz);
     $(path).attr("id", id);
@@ -157,7 +162,28 @@ $(document).ready(function() {
   }
 
   function renderInfo(info, moves) {
+    //TODO Render starting station. Info currently not available
+    var stationNumber = createStationNumber("NA", -1);
+    $(info).append(stationNumber);
 
+    for (var i = 0; i < moves.length; i++) {
+      var move = moves[i];
+      var stationNumber = createStationNumber(move.station, i);
+      $(info).append(stationNumber);
+    }
+
+    return true;
+  }
+
+  function createStationNumber(number, index) {
+    //CONSTANTS
+    var topOffset = 30;
+
+    var span = document.createElement("span");
+    $(span).text(number);
+    $(span).addClass("station-number");
+    $(span).offset({top: (topOffset * (index + 1)), left: 0});
+    return span;
   }
 
 });

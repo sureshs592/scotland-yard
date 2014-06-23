@@ -1,7 +1,23 @@
+.canvas-div {
+	/*background: #CDCEFF;*/
+}
+
+.info-div {
+	/*background: #FFC0C6;*/
+	padding-left: 0px;
+}
+
 .station {
 	fill:white;
 	stroke: #4D4D4D;
 	stroke-width: 4;
+}
+
+.station-number {
+	clear: both;
+	float: left;
+	position: relative;
+	font-weight: bold;
 }
 
 .path {
@@ -23,10 +39,4 @@
 
 .black {
   stroke: black;
-}
-
-.player-canvas {
-	/*border: 1px solid black;
-	background-color: gray;
-	margin: 0px 2px 0px 2px;*/
 }
