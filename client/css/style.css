@@ -7,7 +7,6 @@
 .path {
   z-index: -1;
   stroke-width: 7;
-  filter:url(#svg-blur-effect);
 }
 
 .taxi {
