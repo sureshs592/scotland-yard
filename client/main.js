@@ -95,7 +95,7 @@ $(document).ready(function() {
     renderSVG(canvas, moves);
     renderInfo(info, moves);
 
-    //Hack to make the inserted SVG visible
+    //Reloading the div content. Hack to make the inserted SVG visible: http://stackoverflow.com/questions/3642035/jquerys-append-not-working-with-svg-element
     $(div).html($(div).html());
     return true;
   }
@@ -155,4 +155,9 @@ $(document).ready(function() {
     $(path).attr("y2", y1 + stationGap);
     return path;
   }
+
+  function renderInfo(info, moves) {
+
+  }
+
 });
