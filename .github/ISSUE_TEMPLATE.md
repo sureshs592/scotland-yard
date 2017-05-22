@@ -1,2 +1,4 @@
-# Test Template
+Test Template
+=============
+
 This is a test template
